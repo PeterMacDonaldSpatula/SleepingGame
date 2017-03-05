@@ -12,6 +12,6 @@ class Message {
     fill(#FFFFFF);
     textAlign(CENTER);
     textSize(30);
-    text(message + "\n\nClick to dismiss this message.", 100, 100, 400, 400);
+    text(message + "\n\nClick to dismiss this message.", 100, 100, width-200, height-200);
   }
 }

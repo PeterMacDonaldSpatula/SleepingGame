@@ -6,12 +6,15 @@ class Player {
   int victoryPoints;
   int productivity;
   int actionPoints;
+  int pos;
+  int playerNumber;
+  int yOff;
   int exhaustion;
   int lateness;
   boolean inBed;
   Token token;
   
-  Player(Token token, String name) {
+  Player(int playerNumber) {
     hand = new ArrayList<Card>();
     handSize = HAND_SIZE;
     victoryPoints = 0;
@@ -20,8 +23,10 @@ class Player {
     exhaustion = 0;
     lateness = 0;
     inBed = false;
-    this.token = token;
-    this.name = name;
+    this.token = new Token("data/player"+(playerNumber+1) +".png",10,10);
+    pos = 0;
+    
+    yOff = 20 * playerNumber;
   }
   
   boolean canPlay() {//Returns true if the player still has plays available to them, otherwise false
@@ -38,4 +43,21 @@ class Player {
     hand.add(deck.cards.get(temp));
     deck.cards.remove(temp);
   }
+  
+  void moveForward(int numberMoved){
+    for(int i = 0; i < numberMoved; i++){
+      if(pos < board.numSpaces-1){
+        pos += 1;
+      }
+    }
+  }
+  
+  void moveBack(int numberMoved){
+    for(int i = 0; i < numberMoved; i++){
+      if(pos > 0){
+        pos -= 1;
+      }
+    }
+}
+  
 }

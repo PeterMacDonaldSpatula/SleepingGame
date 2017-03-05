@@ -1,13 +1,23 @@
 abstract class Card{
   String name;
   int cost;
-  PImage back;
+  PImage back, front;
+  boolean mouseOver;
+  int id;
   
   Card() {
     name = "Placeholder";
     cost = 0;
     back = loadImage("normalBack.png");
   }
+  
+  Card(String name, int id) {
+    this.name = name;
+    this.id = id;
+    back = loadImage("normalBack.png");
+    front = loadImage("data/card"+id+".png");
+    mouseOver = false;
+}
   
   abstract void play();
   
